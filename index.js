@@ -7,7 +7,6 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
-const db_user = process.env.DB_USER;
 
 const mongoURI = process.env.MONGO_URI;
 
@@ -15,7 +14,6 @@ mongoose.connect(mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-
 
 .then(() => {
   console.log('Connected to the database');
@@ -29,7 +27,7 @@ mongoose.connect(mongoURI, {
 app.use(express.static('static'));
 
 app.get('/', (req, res) => {
-  res.sendFile(resolve(__dirname, 'pages/index.html'));
+  res.send('Customers Management System Backend is Running on Port 5000');
 });
 
 app.listen(port, () => {
